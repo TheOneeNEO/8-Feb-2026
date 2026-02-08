@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Propose Day ✨</title>
+  <style>
+    :root{
+      --bg1:#070812;
+      --bg2:#16061b;
+      --glow:#ff4d7d;
+      --text:#fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      padding:18px;
+      background:
+        radial-gradient(900px 600px at 20% 20%, #ff4d7d26, transparent 60%),
+        radial-gradient(900px 600px at 80% 80%, #ffd36a1f, transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+    }
+
+    /* subtle stars */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, #ffffffaa 50%, transparent 55%),
+        radial-gradient(1.5px 1.5px at 70% 20%, #ffffff88 50%, transparent 55%),
+        radial-gradient(1.2px 1.2px at 40% 70%, #ffffff77 50%, transparent 55%),
+        radial-gradient(1px 1px at 85% 55%, #ffffff66 50%, transparent 55%),
+        radial-gradient(1.3px 1.3px at 10% 80%, #ffffff66 50%, transparent 55%),
+        radial-gradient(1px 1px at 55% 45%, #ffffff55 50%, transparent 55%);
+      opacity:.55;
+      pointer-events:none;
+      filter: blur(.2px);
+    }
+
+    .card{
+      width:min(760px, 100%);
+      border-radius:22px;
+      background: #ffffff10;
+      border: 1px solid #ffffff22;
+      box-shadow: 0 24px 80px #00000080;
+      backdrop-filter: blur(10px);
+      padding:26px 22px;
+      position:relative;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid #ffffff25;
+      background:#ffffff10;
+      color:#ffffffcc;
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size:30px;
+      font-weight:650;
+    }
+
+    p{
+      margin:10px 0;
+      font-size:17px;
+      line-height:1.65;
+      color:#ffffffdf;
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, #ffffff30, transparent);
+      margin:18px 0;
+    }
+
+    .question{
+      margin-top:10px;
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:.2px;
+      text-shadow: 0 0 22px #ff4d7d3a;
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    button{
+      cursor:pointer;
+      border:1px solid #ffffff2a;
+      background:#ffffff12;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:14px;
+      font-size:14px;
+      transition:.15s ease;
+    }
+    button:hover{ background:#ffffff1a; transform: translateY(-1px); }
+
+    .primary{
+      border-color:#ff4d7d66;
+      box-shadow: 0 0 0 0 rgba(255,77,125,.0);
+    }
+
+    .reveal{
+      display:none;
+      margin-top:16px;
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid #ff4d7d44;
+      background: linear-gradient(135deg, #ff4d7d22, #ffffff08);
+      color:#fff;
+    }
+
+    .sig{
+      margin-top:18px;
+      font-size:13px;
+      color:#ffffffb8;
+    }
+
+    .tiny{
+      font-size:12px;
+      color:#ffffffa8;
+      margin-top:8px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span class="tag">Propose Day • tonight, from me to you</span>
+
+    <h1>I have one simple thing to ask.</h1>
+
+    <p>
+      I lov you in the quiet moments, when there’s nothing to prove, nothing to show.
+      Just you, being you… and me feeling lucky.
+    </p>
+
+    <p>
+      If I could be there, I’d say this looking at you, not through a screen.
+      But I don’t want to wait for the perfect setting to be honest.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="question">Will you be mine😉✨</div>
+
+    <div class="btns">
+      <button class="primary" onclick="showReveal()">Tap for what I mean</button>
+      <button onclick="copyLine()">Copy this message</button>
+    </div>
+
+    <div class="reveal" id="reveal">
+      I’m not asking for a fairytale. I’m asking for us, real, steady, and close,
+      even when life gets busy. As you say yes, I’ll keep choosing you, always, more than before.
+    </div>
+
+    <div class="sig">— always yours, Sumit</div>
+    <div class="tiny" id="copied" style="display:none;">Copied ✅</div>
+  </main>
+  
+  <script>
+    function showReveal(){
+      document.getElementById("reveal").style.display = "block";
+    }
+    async function copyLine(){
+      const msg =
+`Propose Day ✨
+I have one simple thing to ask.
+Will you be mine?
+
+I’m not asking for a fairytale. I’m asking for us, real, steady, and close.
+And as you say yes, I’ll keep choosing you, always, more than before.`;
+      try{
+        await navigator.clipboard.writeText(msg);
+        const c = document.getElementById("copied");
+        c.style.display = "block";
+        setTimeout(()=>c.style.display="none", 1500);
+      }catch(e){
+        alert("Copy didn’t work here — you can select and copy manually.");
+      }
+    }
+  </script>
+</body>
+</html>
